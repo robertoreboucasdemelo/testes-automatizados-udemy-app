@@ -90,6 +90,11 @@ public class LocacaoServiceTest {
 		error.checkThat(DataUtils.isMesmaData(locacao.getDataLocacao(), new Date()), CoreMatchers.is(true));
 		error.checkThat(DataUtils.isMesmaData(locacao.getDataRetorno(), DataUtils.obterDataComDiferencaDias(1)), 
 				CoreMatchers.is(true));
+		
+		// Error - Com Matchers Proprios
+		error.checkThat(locacao.getDataRetorno(), MatchersProprios.ehHojeComDiferencaDias(1));
+		error.checkThat(locacao.getDataLocacao(), MatchersProprios.ehHoje());
+		
 	}
 	
 	// Forma Elegante de Tratar a Exception
